@@ -8,6 +8,7 @@ import (
 	"os"
 	"sync"
 
+	"github.com/hashicorp/terraform/helper/logging"
 	"github.com/hashicorp/terraform/plugin"
 	"github.com/mitchellh/cli"
 	"github.com/mitchellh/panicwrap"
@@ -23,13 +24,10 @@ func realMain() int {
 
 	if !panicwrap.Wrapped(&wrapConfig) {
 		// Determine where logs should go in general (requested by the user)
-		logWriter, err := logOutput()
+		logWriter, err := logging.LogOutput()
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "Couldn't setup log output: %s", err)
 			return 1
-		}
-		if logWriter == nil {
-			logWriter = ioutil.Discard
 		}
 
 		// We always send logs to a temporary file that we use in case
