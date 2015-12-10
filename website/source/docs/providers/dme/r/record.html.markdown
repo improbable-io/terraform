@@ -35,7 +35,7 @@ The following arguments are supported:
 * `value` - (Required) The value of the record; its usage
   will depend on the `type` (see below)
 * `ttl` - (Integer, Optional) The TTL of the record
-* `gtdLocation` - (String, Optional) The GTD Location of the record on GTD enabled domains
+* `gtdLocation` - (String, Optional) The GTD Location of the record on GTD enabled domains; Unless GTD is enabled this should be omitted or set to "DEFAULT" 
 
 Additional arguments are listed below under DNS Record Types.
 
